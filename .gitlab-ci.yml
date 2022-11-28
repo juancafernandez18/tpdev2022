@@ -1,0 +1,53 @@
+stages:
+  - buildApp
+  - push
+  - produccion
+  
+contruccion:
+  stage: buildApp 
+  script:
+    - docker --version
+    - whoami 
+    
+    - docker run hello-world
+    - docker-compose -f docker-compose.yml up --build -d
+  only:
+    refs:
+      - develop
+  tags:
+    - runnermaq
+
+uploadimages:
+  stage: push
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - chmod +x buildandpush.sh
+    - set -a # automatically export all variables
+    - source .env
+    - set +a
+    - ./buildandpush.sh
+  only:
+    refs:
+      - develop
+  tags:
+    - runnermaq
+
+produccion:
+  stage: produccion
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - echo $CI_JOB_TOKEN
+    #- docker-compose -f docker-compose-produccion.yml  up --build -d
+    
+  only:
+    refs:
+      - master
+  tags:
+    - runner2
+
+
+
+
+  
+
+
