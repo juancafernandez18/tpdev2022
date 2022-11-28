@@ -1,0 +1,41 @@
+version: '3.7'
+volumes: 
+  mysql-db-data:
+    name: mysql-db-data
+
+services:
+  frontend:
+    container_name: frontend 
+    image: frontend
+    build: 
+      dockerfile: Dockerfile
+      context: ./frontend
+    environment:
+     - HOST_API=backend 
+    ports:
+      - '80:80'
+    depends_on:
+      - backend      
+  backend:
+    container_name: backend
+    image: backend
+    build: 
+      dockerfile: Dockerfile 
+      context: ./backend
+    environment: 
+      - HOST=mysql-db      
+    ports:
+      - '4000:4000'
+    depends_on:
+      - mysql-db
+  mysql-db:
+    container_name: mysql-db
+    image: mysql-db
+    build: 
+      dockerfile: Dockerfile
+      context: ./mysql
+    ports: 
+      - '3306:3306'
+    volumes: 
+      - 'mysql-db-data:/var/lib/mysql'
+      
