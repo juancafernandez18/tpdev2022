@@ -15,7 +15,7 @@ contruccion:
     refs:
       - develop
   tags:
-    - runnermaq
+    - runnermaquina
 
 uploadimages:
   stage: push
@@ -28,9 +28,9 @@ uploadimages:
     - ./buildandpush.sh
   only:
     refs:
-      - develop
+      - master
   tags:
-    - runnermaq
+    - runnermaquina
 
 produccion:
   stage: produccion
