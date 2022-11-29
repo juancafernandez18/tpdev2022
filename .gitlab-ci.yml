@@ -28,7 +28,7 @@ uploadimages:
     - ./buildandpush.sh
   only:
     refs:
-      - master
+      - develop
   tags:
     - runnermaquina
 
