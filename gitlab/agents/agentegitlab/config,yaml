@@ -1,8 +1,1 @@
- gitops:
-    manifest_projects:
-    - id: "juanca.fernandez18/tpdevops2022"
-      paths:
-      - glob: '/manifests/*.{yaml,yml,json}'
 
-
-     
