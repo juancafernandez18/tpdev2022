@@ -1,8 +1,8 @@
 resource "helm_release" "gitlab_agent" {
-  name = "gitlab-agent"
+  name = "agentegitlab"
 
   repository = "https://charts.gitlab.io"
-  chart      = "gitlab-agent"
+  chart      = "agentegitlab"
 
   create_namespace = true
   namespace        = var.agent_namespace
