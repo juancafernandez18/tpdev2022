@@ -1,5 +1,12 @@
 gitops:
   manifest_projects:
   - id: "juanca.fernandez18/tpdevops2022"
+    default_namespace: default
+    paths:
+    - glob: 'manifest/*.{yaml,yml,json}'
     paths:
     - glob: '/**/*.yaml'
+
+ci_access:
+  groups:
+    - id: grupojuanca 
