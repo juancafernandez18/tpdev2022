@@ -15,7 +15,7 @@ contruccion:
     refs:
       - develop
   tags:
-    - runnermaquina                          #es la maquina virtual que tenemos en google cloud
+    - runnermaquina                          #es la maquina virtual que tenemos en google cloud comentario
 
 uploadimages:
   stage: push
